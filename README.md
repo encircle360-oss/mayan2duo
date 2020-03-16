@@ -56,6 +56,7 @@ docker run \
 -e MAIL_PASSWORD=your-email-password \
 registry.gitlab.com/encircle360-oss/mayan2duo:latest
 ```
+![Mayan2DUO DOCKER](docs/assets/mayan2duo-startup-docker.png)
 
 ### Benefits
 In the best case you've always directly all important documents you specified by type in DUO and mayan-edms.
