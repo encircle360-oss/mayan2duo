@@ -1,0 +1,23 @@
+mayan:
+  api:
+    base-url: https://your-url-to-mayan.tld/api
+    username: mayan-technical-username
+    password: mayan-technical-password
+
+mayan2duo:
+  fixed-delay: 60000 # delay in ms
+  tags:
+    done-id: 3 # id of the tag you want to use for "done" flagging, e.g. "DUO ✓"
+  mapping: # mayanDocumentTypeId : duoEmailAddress
+    '{
+      1: "your-datev-type-email@datevimport.tld"
+    }'
+
+mail:
+  host: your-email-host
+  protocol: smtp
+  tls: true
+  auth: true
+  port: 587
+  username: your-email-username
+  password: your-email-password
