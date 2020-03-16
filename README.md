@@ -36,7 +36,26 @@ Since you've running mayan2duo this invoice receipt will also be pushed to DUO a
 
 ### Setup & Getting started
 ##### Using Docker
-Coming soon.
+```
+docker run \
+-d \
+--name mayan2duo \
+--restart=always \
+-e MAYAN_API_BASEURL='https://your-url-to-mayan.tld/api' \
+-e MAYAN_API_USERNAME=mayan-technical-username \
+-e MAYAN_API_PASSWORD=mayan-technical-password \
+-e MAYAN2DUO_FIXEDDELAY=60000 \
+-e MAYAN2DUO_TAGS_DONEID=1 \
+-e MAYAN2DUO_MAPPING='{1: "your-datev-type1-email@datevimport.tld", 5: "your-datev-type5-email@datevimport.tld"}' \
+-e MAIL_HOST=your-email-host \
+-e MAIL_PROTOCOL=smtp \
+-e MAIL_TLS=true \
+-e MAIL_AUTH=true \
+-e MAIL_PORT=587 \
+-e MAIL_USERNAME=your-email-username \
+-e MAIL_PASSWORD=your-email-password \
+registry.gitlab.com/encircle360-oss/mayan2duo:latest
+```
 
 ### Benefits
 In the best case you've always directly all important documents you specified by type in DUO and mayan-edms.
