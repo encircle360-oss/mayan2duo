@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk
+FROM openjdk:11-jdk-slim
 VOLUME /tmp
 ADD /build/libs/*.jar /mayan2duo-service.jar
 ENV SPRING_PROFILES_ACTIVE=production
