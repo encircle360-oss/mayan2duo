@@ -63,4 +63,4 @@ registry.gitlab.com/encircle360-oss/mayan2duo:latest
 In the best case you've always directly all important documents you specified by type in DUO and mayan-edms.
 In our case we push only the accounting relevant document types to DUO.
 
-This is open source software by [encircle360](https://encircle360.com). Licence will be published soon.
+This is open source software by [encircle360](https://encircle360.com).
