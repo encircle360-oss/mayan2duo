@@ -36,6 +36,7 @@ Since you've running mayan2duo this invoice receipt will also be pushed to DUO a
 
 ### Setup & Getting started
 ##### Using Docker
+You can find all possible configuration properties [here](src/main/resources/application.yml).
 ```
 docker run \
 -d \
