@@ -2,8 +2,8 @@
 
 This is a small microservice that monitors document types in [mayan-edms](https://gitlab.com/mayan-edms/mayan-edms) that are configurable in the service config and pushes them to DATEV Unternehmen Online (DUO) using the email import.
 If a push/sending was successful the documents get a configurable done-tag like in the screenshot below.
+This third-party software was developed by [encircle360](https://encircle360.com) and is in no association with the company [DATEV eG](https://www.datev.de/).
 ![Mayan2DUO DONE TAG](docs/assets/mayan2duo-done-tag.png)
-
 ### What can i do with this software?
 
 For this we can provide an example:
@@ -64,3 +64,4 @@ In the best case you've always directly all important documents you specified by
 In our case we push only the accounting relevant document types to DUO.
 
 This is open source software by [encircle360](https://encircle360.com).
+Use on your own risk and for personal use.
