@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,6 +39,9 @@ public class DocumentProcessor {
     @Value("${mayan2duo.tags.done-id}")
     private Long doneTagId;
 
+    @Value("#{new java.text.SimpleDateFormat('yyyy-MM-dd').parse('${mayan2duo.documents.max-age}').toInstant()}")
+    private Instant maxDocumentAge;
+
     @Scheduled(fixedDelayString = "${mayan2duo.fixed-delay}")
     public void processDocuments() {
         log.info("Processing documents...");
@@ -58,8 +62,9 @@ public class DocumentProcessor {
                 mayanDocumentDTOList.addAll(documentsByDocumentTypeId.getResults());
             }
 
-            // filter the documents that don't have the doneTag
+            // filter the documents that don't have the doneTag and are older than defined date
             List<MayanDocumentDTO> documentsNotProcessed = mayanDocumentDTOList.stream()
+                    .filter(mayanDocument -> mayanDocument.getDateAdded().isAfter(this.maxDocumentAge))
                     .filter(mayanDocument -> {
                         MayanPageDTO<MayanTagDTO> mayanTagPage = mayanService.getTagsByDocumentId(mayanDocument.getId());
                         return mayanTagPage.getResults()

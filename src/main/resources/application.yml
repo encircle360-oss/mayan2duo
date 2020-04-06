@@ -6,6 +6,8 @@ mayan:
 
 mayan2duo:
   fixed-delay: 60000 # delay in ms
+  documents:
+    max-age: 2020-03-01 # yyyy-MM-dd; ignore documents older than defined max-age
   tags:
     done-id: 3 # id of the tag you want to use for "done" flagging, e.g. "DUO ✓"
   mapping: # mayanDocumentTypeId : duoEmailAddress
