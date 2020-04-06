@@ -20,8 +20,8 @@ public class MayanService {
 
     private final MayanAPIClient mayanAPIClient;
 
-    public MayanPageDTO<MayanDocumentDTO> getDocumentsByDocumentTypeId(Long documentTypeId) {
-        return mayanAPIClient.getDocumentsByDocumentTypeId(documentTypeId);
+    public MayanPageDTO<MayanDocumentDTO> getDocumentsByDocumentTypeId(Long documentTypeId, Integer page) {
+        return mayanAPIClient.getDocumentsByDocumentTypeId(documentTypeId, page);
     }
 
     public MayanPageDTO<MayanTagDTO> getTagsByDocumentId(Long documentId) {

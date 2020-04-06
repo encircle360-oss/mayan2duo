@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,13 +44,22 @@ public class DocumentProcessor {
 
         // iterate over all mappings <mayanDocumentTypeId,duoEmailAddress>
         this.mapping.forEach((mayanDocumentTypeId, duoEmailAddress) -> {
+            List<MayanDocumentDTO> mayanDocumentDTOList = new ArrayList<>();
+            Integer page = 1;
 
+            // collection process
             // get all mayan documents by document types
             MayanPageDTO<MayanDocumentDTO> documentsByDocumentTypeId =
-                    mayanService.getDocumentsByDocumentTypeId(mayanDocumentTypeId);
+                    mayanService.getDocumentsByDocumentTypeId(mayanDocumentTypeId, page);
+            mayanDocumentDTOList.addAll(documentsByDocumentTypeId.getResults());
+
+            while(documentsByDocumentTypeId.getNext() != null) {
+                documentsByDocumentTypeId = mayanService.getDocumentsByDocumentTypeId(mayanDocumentTypeId, ++page);
+                mayanDocumentDTOList.addAll(documentsByDocumentTypeId.getResults());
+            }
 
             // filter the documents that don't have the doneTag
-            List<MayanDocumentDTO> documentsNotProcessed = documentsByDocumentTypeId.getResults().stream()
+            List<MayanDocumentDTO> documentsNotProcessed = mayanDocumentDTOList.stream()
                     .filter(mayanDocument -> {
                         MayanPageDTO<MayanTagDTO> mayanTagPage = mayanService.getTagsByDocumentId(mayanDocument.getId());
                         return mayanTagPage.getResults()

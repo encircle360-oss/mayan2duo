@@ -6,16 +6,13 @@ import com.encircle360.oss.m2d.dto.mayan.MayanPageDTO;
 import com.encircle360.oss.m2d.dto.mayan.MayanTagDTO;
 import com.encircle360.oss.m2d.dto.mayan.NewDocumentTagRequestDTO;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 @FeignClient(name = "mayanAPIClient", configuration = FeignConfig.class, url = "${mayan.api.base-url}")
 public interface MayanAPIClient {
 
     @GetMapping("/document_types/{documentTypeId}/documents/")
-    MayanPageDTO<MayanDocumentDTO> getDocumentsByDocumentTypeId(@PathVariable("documentTypeId") Long documentTypeId);
+    MayanPageDTO<MayanDocumentDTO> getDocumentsByDocumentTypeId(@PathVariable("documentTypeId") Long documentTypeId, @RequestParam("page") Integer page);
 
     @GetMapping("/documents/{documentId}/tags/")
     MayanPageDTO<MayanTagDTO> getTagsByDocumentId(@PathVariable("documentId") Long documentId);
