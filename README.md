@@ -55,6 +55,7 @@ docker run \
 -e MAIL_PORT=587 \
 -e MAIL_USERNAME=your-email-username \
 -e MAIL_PASSWORD=your-email-password \
+-e MAIL_FROM=your-email-from \
 registry.gitlab.com/encircle360-oss/mayan2duo:latest
 ```
 ![Mayan2DUO DOCKER](docs/assets/mayan2duo-startup-docker.png)

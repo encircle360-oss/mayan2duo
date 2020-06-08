@@ -21,6 +21,7 @@ public class MailConfig {
     private String protocol;
     private boolean auth;
     private boolean tls;
+    private String from;
     private boolean debug;
 
     @Bean
@@ -36,6 +37,7 @@ public class MailConfig {
         props.put("mail.transport.protocol", this.protocol);
         props.put("mail.smtp.auth", this.auth);
         props.put("mail.smtp.starttls.enable", this.tls);
+        props.put("mail.smtp.from", this.from);
         props.put("mail.debug", this.debug);
 
         return mailSender;
