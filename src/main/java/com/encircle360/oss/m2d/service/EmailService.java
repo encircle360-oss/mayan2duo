@@ -35,7 +35,7 @@ public class EmailService {
 
             mailSender.send(message);
             return true;
-        } catch (MessagingException me) {
+        } catch (Exception me) {
             log.error("MessagingException occured. Couldn't send mail with attachment.", me);
             return false;
         }

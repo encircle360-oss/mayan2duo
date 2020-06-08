@@ -23,3 +23,4 @@ mail:
   port: 587
   username: your-email-username
   password: your-email-password
+  from: your-email-from
